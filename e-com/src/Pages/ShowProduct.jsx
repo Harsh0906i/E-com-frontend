@@ -13,6 +13,7 @@ import Snackbar from '@mui/material/Snackbar';
 import IconButton from '@mui/material/IconButton';
 export default function ShowProduct() {
     const { currentUser } = useSelector((state) => state.user1)
+    const { cart } = useSelector((state) => state.user1)
     const dispatch = useDispatch()
     const [loading, setloading] = useState(false);
     const [item, setitem] = useState({});

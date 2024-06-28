@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     currentUser: {},
-    cart: [],
+    cart: null,
     error: null,
     loading: false,
 }
@@ -56,11 +56,13 @@ const userSlice = createSlice({
                 ROM: action.payload.productData.storage.ROM,
                 name: action.payload.productData.name,
                 category: action.payload.productData.category,
-                productId: action.payload.productData._id
+                productId: action.payload.productData._id,
+            };
+            if (state.cart === null) {
+                state.cart = [newCart]; // Initialize cart with newCartItem if null
+            } else {
+                state.cart = [...state.cart, newCart]; // Append newCartItem to existing cart array
             }
-            state.cart = [
-                ...state.cart, newCart
-            ];
         },
         removeFromCartSuccess: (state, action) => {
             const productId = action.payload;
