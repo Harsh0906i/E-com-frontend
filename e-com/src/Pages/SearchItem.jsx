@@ -6,6 +6,7 @@ import ShowSearchesItem from "../Component/ShowSearchesItem";
 export default function ShowItem() {
     const navigate = useNavigate();
     const [loading, setloading] = useState(false);
+    const [showloading, setshowloading] = useState(false);
     const [Item, setItem] = useState([]);
     const [showMore, setshowMore] = useState(true);
     const [sideBarData, setsideBarData] = useState({
@@ -134,9 +135,9 @@ export default function ShowItem() {
                         }{
                             !loading && Item && Item.map((item) => (<ShowSearchesItem key={item._id} items={item} />))
                         }{
-                            showMore && (
-                                <button className="text-green-700 hover:underline p-7 text-center w-full text-sm"
-                                    onClick={(e) => { e.preventDefault(); showMoreButton() }}>Show more..</button>
+                            showMore && !loading && (
+                                <button disabled={showloading} className="text-green-700 hover:underline p-7 text-center w-full text-sm"
+                                    onClick={(e) => { e.preventDefault(); showMoreButton(); setshowloading(true) }}>{showloading ? 'Loading...' : 'Show more...'}</button>
                             )
                         }
                     </div>
