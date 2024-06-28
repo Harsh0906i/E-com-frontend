@@ -5,7 +5,7 @@ export default defineConfig({
   server:{
     proxy:{
       '/api':{
-        target:'http://localhost:8080',
+        target:'https://e-backend-epvh9qah9-harshit-singh-aryas-projects.vercel.app',
         secure:false
       },
     },
