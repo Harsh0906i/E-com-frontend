@@ -26,7 +26,7 @@ export default function ShowProduct() {
     useEffect(() => {
         async function fetchItem() {
             try {
-                const res = await fetch(`/api/item/getItem/${params.itemid}`);
+                const res = await fetch(`https://e-backend-dps3pnj58-harshit-singh-aryas-projects.vercel.app/api/item/getItem/${params.itemid}`);
                 const data = await res.json();
                 if (data.success === false) {
                     setloading(false);
@@ -44,7 +44,7 @@ export default function ShowProduct() {
     }, [params.itemid]);
 
     async function addToCart() {
-        const res = await fetch(`/api/item/getItem/${params.itemid}`);
+        const res = await fetch(`https://e-backend-dps3pnj58-harshit-singh-aryas-projects.vercel.app/api/item/getItem/${params.itemid}`);
         const data = await res.json();
         dispatch(addToCartSuccess({ productData: data, user: currentUser._id }));
     }
