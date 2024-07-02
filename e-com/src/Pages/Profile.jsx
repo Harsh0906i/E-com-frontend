@@ -6,7 +6,7 @@ export default function Profile() {
   async function HandleSignOut() {
     try {
       dispatch(signOutUserStart())
-      const res = await fetch('https://e-backend-6899geh2o-harshit-singh-aryas-projects.vercel.app/api/auth/signout', {
+      const res = await fetch('https://e-backend-xi.vercel.app/api/auth/signout', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -21,7 +21,7 @@ export default function Profile() {
   async function HandleDelete() {
     try {
       dispatch(userDeleteStart());
-      const res = await fetch(`https://e-backend-6899geh2o-harshit-singh-aryas-projects.vercel.app/api/auth/delete/${currentUser._id}`, {
+      const res = await fetch(`https://e-backend-xi.vercel.app/api/auth/delete/${currentUser._id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json'
