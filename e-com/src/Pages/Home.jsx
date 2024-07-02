@@ -16,10 +16,10 @@ export default function Home() {
   useEffect(() => {
     async function fetchMobile() {
       try {
-        const res = await fetch('http://localhost:8080/api/item/get?mobile=true&computer=false&CPU=false&All=true&limit=3');
+        const res = await fetch('https://e-backend-6899geh2o-harshit-singh-aryas-projects.vercel.app/api/item/get?mobile=true&computer=false&CPU=false&All=true&limit=3');
         const data = await res.json();
         setMobileItem(data);
-        console.log('data',data)
+        console.log('data', data)
       } catch (error) {
         console.log(error);
       }
@@ -27,10 +27,10 @@ export default function Home() {
 
     async function fetchComputer() {
       try {
-        const res = await fetch('http://localhost:8080/api/item/get?searchTerm=&mobile=false&computer=true&CPU=false&All=true&limit=3');
+        const res = await fetch('https://e-backend-6899geh2o-harshit-singh-aryas-projects.vercel.app/api/item/get?searchTerm=&mobile=false&computer=true&CPU=false&All=true&limit=3');
         const data = await res.json();
         setComputerItem(data);
-        console.log('data',data)
+        console.log('data', data)
       } catch (error) {
         console.log(error);
       }
@@ -38,10 +38,10 @@ export default function Home() {
 
     async function fetchCPU() {
       try {
-        const res = await fetch('http://localhost:8080/api/item/get?searchTerm=&mobile=false&computer=false&CPU=true&All=true&limit=3');
+        const res = await fetch('https://e-backend-6899geh2o-harshit-singh-aryas-projects.vercel.app/api/item/get?searchTerm=&mobile=false&computer=false&CPU=true&All=true&limit=3');
         const data = await res.json();
         setElectronicsItem(data);
-        console.log('data',data)
+        console.log('data', data)
       } catch (e) {
         console.log(e);
       }
