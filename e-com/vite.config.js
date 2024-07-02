@@ -7,7 +7,7 @@ export default defineConfig({
       '/api': {
         target: 'https://e-backend-ng9cf9hb5-harshit-singh-aryas-projects.vercel.app/',
         changeOrigin: true,
-        secure: true,
+        secure: false,
       },
     },
   },
