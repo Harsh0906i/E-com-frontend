@@ -16,7 +16,7 @@ export default function Home() {
   useEffect(() => {
     async function fetchMobile() {
       try {
-        const res = await fetch('/api/item/get?mobile=true&computer=false&CPU=false&All=true&limit=3');
+        const res = await fetch('https://e-backend-dps3pnj58-harshit-singh-aryas-projects.vercel.app/api/item/get?mobile=true&computer=false&CPU=false&All=true&limit=3');
         const data = await res.json();
         setMobileItem(data);
       } catch (error) {
@@ -26,7 +26,7 @@ export default function Home() {
 
     async function fetchComputer() {
       try {
-        const res = await fetch('/api/item/get?searchTerm=&mobile=false&computer=true&CPU=false&All=true&limit=3');
+        const res = await fetch('https://e-backend-dps3pnj58-harshit-singh-aryas-projects.vercel.app/api/item/get?searchTerm=&mobile=false&computer=true&CPU=false&All=true&limit=3');
         const data = await res.json();
         setComputerItem(data);
       } catch (error) {
@@ -36,7 +36,7 @@ export default function Home() {
 
     async function fetchCPU() {
       try {
-        const res = await fetch('/api/item/get?searchTerm=&mobile=false&computer=false&CPU=true&All=true&limit=3');
+        const res = await fetch('https://e-backend-dps3pnj58-harshit-singh-aryas-projects.vercel.app/api/item/get?searchTerm=&mobile=false&computer=false&CPU=true&All=true&limit=3');
         const data = await res.json();
         setElectronicsItem(data);
       } catch (e) {
