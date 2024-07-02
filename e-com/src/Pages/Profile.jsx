@@ -1,8 +1,11 @@
 import { useDispatch, useSelector } from "react-redux"
 import { signOutUserFaliure, signOutUserStart, signOutUserSuccess, userDeleteFaliure, userDeleteSuccess,userDeleteStart } from "../Redux/User/UserSlice";
+import { useState } from "react";
 export default function Profile() {
   const dispatch = useDispatch()
   const { currentUser, loading, error } = useSelector((state) => state.user1)
+  const [deleteState, setDeleteState] = useState(false);
+
   async function HandleSignOut() {
     try {
       dispatch(signOutUserStart())
@@ -20,7 +23,7 @@ export default function Profile() {
   }
   async function HandleDelete() {
     try {
-      dispatch(userDeleteStart());
+      setDeleteState(true)
       const res = await fetch(`https://e-backend-xi.vercel.app/api/auth/delete/${currentUser._id}`, {
         method: 'DELETE',
         headers: {
@@ -30,9 +33,12 @@ export default function Profile() {
       const data = await res.json();
       if (data.success === false) {
         dispatch(userDeleteFaliure(data.message))
+        setDeleteState(false)
       }
+      setDeleteState(false)
       dispatch(userDeleteSuccess());
     } catch (error) {
+      setDeleteState(false)
       dispatch(userDeleteFaliure(error.message))
     }
   }
@@ -47,7 +53,7 @@ export default function Profile() {
         <input type="email" required value={currentUser.email} id='email' className='border p-3 rounded-lg' placeholder="Enter your email..." />
       </form>
       <div className="flex justify-between mt-5">
-        <span onClick={HandleDelete} className="text-red-700 cursor-pointer hover:underline">{loading ? 'Deleting...' : 'Delete account'}</span>
+        <span onClick={HandleDelete} className="text-red-700 cursor-pointer hover:underline">{deleteState ? 'Deleting...' : 'Delete account'}</span>
         <span onClick={HandleSignOut} className="text-red-700 cursor-pointer hover:underline">{loading ? 'Signing out...' : 'Sign Out'}</span>
       </div>
     </div>
