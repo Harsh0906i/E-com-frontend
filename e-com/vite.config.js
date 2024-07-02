@@ -4,11 +4,11 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   server: {
     proxy: {
-      // '/api': {
-      //   target: 'https://e-backend-ng9cf9hb5-harshit-singh-aryas-projects.vercel.app/',
-      //   changeOrigin: true,
-      //   secure: true,
-      // },
+      '/api': {
+        target: 'https://e-backend-ng9cf9hb5-harshit-singh-aryas-projects.vercel.app/',
+        changeOrigin: true,
+        secure: true,
+      },
     },
   },
   plugins: [react()],

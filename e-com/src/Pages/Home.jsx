@@ -36,7 +36,7 @@ export default function Home() {
 
     async function fetchCPU() {
       try {
-        const res = await fetch('/api/item/get??searchTerm=&mobile=false&computer=false&CPU=true&All=true&limit=3');
+        const res = await fetch('/api/item/get?searchTerm=&mobile=false&computer=false&CPU=true&All=true&limit=3');
         const data = await res.json();
         setElectronicsItem(data);
       } catch (e) {
@@ -55,7 +55,7 @@ export default function Home() {
           &&
           computerItem.map((computer) => (
             <SwiperSlide>
-              <div style={{ background: `url(${computer.image}) center no-repeat`, backgroundSize: 'cover' }} className='h-[450px]' key={computer._id}></div>
+              <div style={{ background: `url(${computer.image}) center no-repeat`, backgroundSize: 'cover' }} className='h-[450px]' key={computer.image}></div>
             </SwiperSlide>
           ))}
       </Swiper>
@@ -68,7 +68,7 @@ export default function Home() {
             </div>
             <div className='flex flex-wrap gap-4'>
               {mobileItem.map((mobile) => (
-                <Item item={mobile} />
+                <Item item={mobile} key={mobile._id} />
               ))}
             </div>
           </div>
@@ -83,7 +83,7 @@ export default function Home() {
             </div>
             <div className='flex flex-wrap gap-4'>
               {electronicsItem.map((e) => (
-                <Item item={e} />
+                <Item item={e} key={e._id} />
               ))}
             </div>
           </div>
@@ -98,7 +98,7 @@ export default function Home() {
             </div>
             <div className='flex flex-wrap gap-4'>
               {computerItem.map((e) => (
-                <Item item={e} />
+                <Item item={e} key={e._id} />
               ))}
             </div>
           </div>

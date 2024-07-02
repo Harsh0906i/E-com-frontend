@@ -7,13 +7,13 @@ export default function Signup() {
   const [loading, setloading] = useState(false);
   const navigate = useNavigate();
   setTimeout(() => {
-   setError(false);
+    setError(false);
   }, 2000);
   async function HandleSubmit(e) {
     e.preventDefault();
     try {
       setloading(true)
-      const res = await fetch('https://e-backend-ng9cf9hb5-harshit-singh-aryas-projects.vercel.app/api/auth/signup', {
+      const res = await fetch('/api/auth/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -56,7 +56,7 @@ export default function Signup() {
         </div>
         {error && <p className='text-red-500 mt-5'>{error}</p>}
       </div>
-      
+
     </>
   )
 }
