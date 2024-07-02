@@ -23,7 +23,7 @@ export default function ShowItem() {
         const UrlParams = new URLSearchParams(location.search);
         UrlParams.set('startIndex', startIndex);
         const searchQuery = UrlParams.toString();
-        const res = await fetch(`https://e-backend-dps3pnj58-harshit-singh-aryas-projects.vercel.app/api/item/get?${searchQuery}`);
+        const res = await fetch(`https://e-backend-6899geh2o-harshit-singh-aryas-projects.vercel.app/api/item/get?${searchQuery}`);
         const data = await res.json();
         if (data.length < 9) {
             setshowMore(false)
