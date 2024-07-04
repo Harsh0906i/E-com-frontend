@@ -23,6 +23,7 @@ export default function ShowItem() {
         const UrlParams = new URLSearchParams(location.search);
         UrlParams.set('startIndex', startIndex);
         const searchQuery = UrlParams.toString();
+        setshowloading(true)
         const res = await fetch(`https://e-backend-xi.vercel.app/api/item/get?${searchQuery}`);
         const data = await res.json();
         if (data.length < 9) {
@@ -32,6 +33,7 @@ export default function ShowItem() {
             setshowMore(true)
         }
         setItem([...Item, ...data]);
+        setshowloading(false)
     };
 
     function HandleChange(e) {
@@ -94,7 +96,7 @@ export default function ShowItem() {
     }, [location.search])
     return (
         <div className="flex flex-col md:flex-row">
-            <div className="p-7 border-b-2 md:border-r-2 md:min-h-screen">
+            <div className="p-7 border-b-2 border-gray-500 md:border-r-2 md:min-h-screen">
                 <form onSubmit={HandleSubmit} className="flex flex-col gap-8">
                     <div className="flex items-center gap-2">
                         <label className="whiteSpace-nowrap font-semibold">SearchTerm</label>
@@ -135,9 +137,9 @@ export default function ShowItem() {
                         }{
                             !loading && Item && Item.map((item) => (<ShowSearchesItem key={item._id} items={item} />))
                         }{
-                            showMore && !loading && (
-                                <button disabled={showloading} className="text-green-700 hover:underline p-7 text-center w-full text-sm"
-                                    onClick={(e) => { e.preventDefault(); showMoreButton(); setshowloading(true) }}>{showloading ? 'Loading...' : 'Show more...'}</button>
+                            !loading && (
+                                <button className="text-green-700 hover:underline p-7 text-center w-full text-sm"
+                                    onClick={(e) => { e.preventDefault(); showMoreButton(); setshowloading(true) }}>Show more</button>
                             )
                         }
                     </div>

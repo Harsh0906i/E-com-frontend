@@ -12,7 +12,7 @@ export default function Home() {
   const [electronicsItem, setElectronicsItem] = useState([]);
   const [loading, setLoading] = useState(false);
   const [imageIndex, setImageIndex] = useState(0);
-  
+
   SwiperCore.use([Navigation]);
 
   useEffect(() => {
@@ -63,11 +63,11 @@ export default function Home() {
         <h1 className="font-semibold">Loading...</h1>
       ) : (
         <>
-          <Swiper navigation>
+          <Swiper navigation className="shadow-lg shadow-gray m-2">
             {computerItem.length > 0 && computerItem.map((computer) => (
               <SwiperSlide key={computer._id}>
-                <div 
-                  style={{ background: `url(${computer.image}) center no-repeat`, backgroundSize: 'cover' }} 
+                <div
+                  style={{ background: `url(${computer.image}) center no-repeat`, backgroundSize: 'cover' }}
                   className='h-[450px]'>
                 </div>
               </SwiperSlide>
