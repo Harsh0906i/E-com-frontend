@@ -19,7 +19,7 @@ export default function Home() {
     async function fetchMobile() {
       try {
         setLoading(true);
-        const res = await fetch('https://e-backend-xi.vercel.app/api/item/get?mobile=true&computer=false&CPU=false&All=true&limit=3');
+        const res = await fetch('/api/item/get?mobile=true&computer=false&CPU=false&All=true&limit=3');
         const data = await res.json();
         setMobileItem(data);
         setLoading(false);
@@ -31,7 +31,7 @@ export default function Home() {
     async function fetchComputer() {
       try {
         setLoading(true);
-        const res = await fetch('https://e-backend-xi.vercel.app/api/item/get?searchTerm=&mobile=false&computer=true&CPU=false&All=true&limit=3');
+        const res = await fetch('/api/item/get?searchTerm=&mobile=false&computer=true&CPU=false&All=true&limit=3');
         const data = await res.json();
         setComputerItem(data);
         setLoading(false);
@@ -43,7 +43,7 @@ export default function Home() {
     async function fetchCPU() {
       try {
         setLoading(true);
-        const res = await fetch('https://e-backend-xi.vercel.app/api/item/get?searchTerm=&mobile=false&computer=false&CPU=true&All=true&limit=3');
+        const res = await fetch('/api/item/get?searchTerm=&mobile=false&computer=false&CPU=true&All=true&limit=3');
         const data = await res.json();
         setElectronicsItem(data);
         setLoading(false);
