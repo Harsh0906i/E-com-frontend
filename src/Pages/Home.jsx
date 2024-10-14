@@ -11,7 +11,6 @@ export default function Home() {
   const [computerItem, setComputerItem] = useState([]);
   const [electronicsItem, setElectronicsItem] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [imageIndex, setImageIndex] = useState(0);
 
   SwiperCore.use([Navigation]);
 
@@ -60,16 +59,23 @@ export default function Home() {
   return (
     <>
       {loading ? (
-        <h1 className="font-semibold">Loading...</h1>
+        <h1 className="text-xl text-center">Loading...</h1>
       ) : (
         <>
-          <Swiper navigation className="shadow-lg shadow-gray m-2">
+          <Swiper
+            navigation
+            className="shadow-lg shadow-gray m-2"
+            style={{ height: 'auto' }}  // Ensure Swiper has sufficient height
+          >
             {computerItem.length > 0 && computerItem.map((computer) => (
-              <SwiperSlide key={computer._id}>
+              <SwiperSlide key={computer._id} className="h-auto">
                 <div
-                  style={{ background: `url(${computer.image}) center no-repeat`, backgroundSize: 'cover' }}
-                  className='h-[450px]'>
-                </div>
+                  style={{
+                    background: `url(${computer.image}) center center / cover no-repeat`,
+                    height: '13rem'  // Adjust as needed
+                  }}
+                  className="w-full"
+                ></div>
               </SwiperSlide>
             ))}
           </Swiper>
