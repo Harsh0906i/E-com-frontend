@@ -7,7 +7,7 @@ import { SiStmicroelectronics } from "react-icons/si";
 export default function Header() {
     const { currentUser } = useSelector((state) => state.user1)
     const [searchTerm, setSearchTerm] = useState('');
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
 
     function HandleSubmit(e) {
         e.preventDefault();
