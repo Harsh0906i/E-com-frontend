@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useState } from "react";
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -21,6 +21,7 @@ export default function ShowProduct() {
     const [err, seterr] = useState(false);
     const params = useParams();
     const [open, setOpen] = React.useState(false);
+    console.log(cart)
 
 
     useEffect(() => {
@@ -47,6 +48,9 @@ export default function ShowProduct() {
         const res = await fetch(`/api/item/getItem/${params.itemid}`);
         const data = await res.json();
         dispatch(addToCartSuccess({ productData: data, user: currentUser._id }));
+        // cart.map((item)=>{
+        //     console.log(item)
+        // })
     }
 
     const handleClick = () => {
@@ -99,14 +103,22 @@ export default function ShowProduct() {
                                 </>
                             )}
                             <Typography component="span" variant="body2" color="text.secondary">
-                                Regular Price: <span className="line-through">₹{item.regularPrice}</span>
+                                {item.discountedPrice ? (
+                                    <>
+                                    Regular Price: <span className="line-through">₹{new Intl.NumberFormat('en-IN').format(item.regularPrice)}</span>
+                                        <div>
+                                            Discounted Price: ₹{new Intl.NumberFormat('en-IN').format(item.discountedPrice)}
+                                        </div>
+                                    </>
+                                ) : (
+                                    <>
+                                        Price: <span>₹{new Intl.NumberFormat('en-IN').format(item.regularPrice)}</span>
+                                    </>
+                                )}
                             </Typography>
-                            <div>
-                                Discounted Price: ₹{item.discountedPrice}
-                            </div>
                         </Typography>
                     </CardContent>
-                    <Button>{currentUser ? <button onClick={() => { { addToCart() }; handleClick() }}>Add to cart</button> : <span className="text-red-700">Sign in to add to cart</span>}</Button>
+                    <Button className="">{currentUser ? <button onClick={() => { { addToCart() }; handleClick() }}>Add to cart</button> : <Link className="text-red-700 " to={'/login'}>Sign in to add to cart</Link>}</Button>
                 </Card>
             </div>
             <div>

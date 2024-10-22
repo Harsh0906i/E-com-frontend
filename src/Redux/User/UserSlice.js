@@ -58,15 +58,20 @@ const userSlice = createSlice({
                 category: action.payload.productData.category,
                 productId: action.payload.productData._id,
             };
-            if (state.cart === null) {
-                state.cart = [newCart]; // Initialize cart with newCartItem if null
-            } else {
-                state.cart = [...state.cart, newCart]; // Append newCartItem to existing cart array
+
+            console.log('Current cart before adding:', state.cart);
+
+            if (!Array.isArray(state.cart)) {
+                console.error("Cart is not an array, initializing as an empty array");
+                state.cart = []; 
             }
+        
+            state.cart.push(newCart)
+
         },
         removeFromCartSuccess: (state, action) => {
             const productId = action.payload;
-            state.cart = state.cart.filter(item => item.productId !== productId);
+            state.cart = state.cart.filter(item => item.productId !== productId.productId);
         },
 
     }

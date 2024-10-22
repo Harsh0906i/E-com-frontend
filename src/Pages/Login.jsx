@@ -42,10 +42,10 @@ export default function Login() {
     <div className='p-3 max-w-lg mx-auto'>
       <h1 className='text-3xl text-center font-semibold my-7'>Sign In</h1>
       <form onSubmit={HandleSubmit} className='flex flex-col gap-4' >
-        <input type="email" required onChange={HandleChange} className='border p-3 rounded-lg' placeholder="Enter your email..." id="email" />
-        <input onChange={HandleChange} required type="password" className='border p-3 rounded-lg' placeholder="Enter password..." id="password" />
-        <button className="bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95">{loading ? 'Loading...' : 'Sign in'}</button>
-        <Oauth />
+        <input type="email" required onChange={HandleChange} className='border p-3 rounded-lg' placeholder="Enter your email..." id="email" style={{'borderRadius':'15px'}} />
+        <input onChange={HandleChange} required type="password" className='border p-3 rounded-lg' placeholder="Enter password..." id="password"style={{'borderRadius':'15px'}} />
+        <button style={{'borderRadius':'15px'}} className="bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95">{loading ? 'Loading...' : 'Sign in'}</button>
+      <Oauth/>
       </form>
       <div className="flex gap-2 mt-5">
         <p>Dont have an account?</p>

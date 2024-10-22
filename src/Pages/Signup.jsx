@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import Oauth from '../Component/Oauth';
+
 export default function Signup() {
   const [formData, setFormData] = useState({})
   const [error, setError] = useState(null);
@@ -41,22 +41,21 @@ export default function Signup() {
         <h1 className='text-3xl text-center font-semibold my-7'>Sign Up</h1>
         <form onSubmit={HandleSubmit} className='flex flex-col gap-4' >
 
-          <input type="text" required onChange={HandleChange} className='border p-3 rounded-lg' placeholder="Enter your name..." id='username' />
+          <input type="text" required onChange={HandleChange} className='border p-3 rounded-lg' placeholder="Enter your name..." id='username' style={{'borderRadius':'15px'}} />
 
-          <input type="email" required onChange={HandleChange} id='email' className='border p-3 rounded-lg' placeholder="Enter your email..." />
+          <input type="email" required onChange={HandleChange} id='email' className='border p-3 rounded-lg' placeholder="Enter your email..." style={{'borderRadius':'15px'}} />
 
-          <input type="password" required onChange={HandleChange} id='password' className='border p-3 rounded-lg' placeholder="Enter password..." />
+          <input type="password" required onChange={HandleChange} id='password' className='border p-3 rounded-lg' placeholder="Enter password..." style={{'borderRadius':'15px'}} />
 
-          <button className="bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95">{loading ? 'Loading...' : 'Signup'}</button>
-          <Oauth />
+          <button style={{'borderRadius':'15px'}} className="bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95">{loading ? 'Loading...' : 'Signup'}</button>
+          <Oauth/>
         </form>
-        <div className="flex gap-2 mt-5">
+        <div className="flex gap-2 mt-5 " >
           <p>Have an account?</p>
-          <Link to={'/signin'} className="text-blue-700">Sign in</Link>
+          <Link to={'/signin'} className="text-blue-700" >Sign in</Link>
         </div>
         {error && <p className='text-red-500 mt-5'>{error}</p>}
       </div>
-
     </>
   )
 }

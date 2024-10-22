@@ -30,6 +30,6 @@ export default function Oauth() {
         }
     }
     return (
-        <button onClick={HandleGoogle} type="button" className="bg-red-700 text-white p-3 rounded-lg uppercase hover:opacity-95">{loading ? 'Loading...' : 'continue with google'}</button>
+        <button onClick={HandleGoogle} type="button" disabled={loading} className="bg-red-700 text-white p-3 rounded-lg uppercase hover:opacity-95">{loading ? 'Loading...' : 'continue with google'}</button>
     )
 }

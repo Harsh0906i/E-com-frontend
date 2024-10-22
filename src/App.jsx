@@ -8,6 +8,9 @@ import Profile from './Pages/Profile'
 import Private from './Component/Private';
 import ShowItem from './Pages/SearchItem';
 import ShowProduct from './Pages/ShowProduct'
+import Dashboard from './Component/Dashboard'
+import Upload from './Pages/Upload'
+import Admin from './Component/Admin'
 
 function App() {
   return (
@@ -21,8 +24,11 @@ function App() {
         <Route element={<Private />}>
           <Route path='/cart' element={<Cart />} />
           <Route path='/profile' element={<Profile />} />
+          <Route path='/dashboard/:id' element={<Dashboard/>}/>
         </Route>
         <Route path='/item/:itemid' element={<ShowProduct />} />
+        <Route path='/upload' element={<Upload/>}/>
+        <Route path='/admin/:id' element={<Admin/>} />
       </Routes>
     </BrowserRouter>
   )

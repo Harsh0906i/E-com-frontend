@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
-import { signOutUserFaliure, signOutUserStart, signOutUserSuccess, userDeleteFaliure, userDeleteSuccess,userDeleteStart } from "../Redux/User/UserSlice";
+import { signOutUserFaliure, signOutUserStart, signOutUserSuccess, userDeleteFaliure, userDeleteSuccess } from "../Redux/User/UserSlice";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 export default function Profile() {
   const dispatch = useDispatch()
   const { currentUser, loading, error } = useSelector((state) => state.user1)
@@ -55,6 +56,13 @@ export default function Profile() {
       <div className="flex justify-between mt-5">
         <span onClick={HandleDelete} className="text-red-700 cursor-pointer hover:underline">{deleteState ? 'Deleting...' : 'Delete account'}</span>
         <span onClick={HandleSignOut} className="text-red-700 cursor-pointer hover:underline">{loading ? 'Signing out...' : 'Sign Out'}</span>
+      </div>
+      <div className="text-center text-green-700">
+        <Link to={`/dashboard/${currentUser._id}`}>
+        <button className="bg-green-200 text-green-800 py-2 px-3 rounded-full border border-green-700  hover:bg-green-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-opacity-50 transition">
+          Dashboard
+        </button>
+        </Link>
       </div>
     </div>
   )

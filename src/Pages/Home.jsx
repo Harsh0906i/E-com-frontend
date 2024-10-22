@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css/bundle';
 import SwiperCore from 'swiper';
 import { Navigation } from 'swiper/modules';
 import Item from '../Component/Item';
 import { Link } from "react-router-dom";
+import Carousel from "../Component/Carousel";
 
 export default function Home() {
   const [mobileItem, setMobileItem] = useState([]);
@@ -18,7 +18,7 @@ export default function Home() {
     async function fetchMobile() {
       try {
         setLoading(true);
-        const res = await fetch('/api/item/get?mobile=true&computer=false&CPU=false&All=true&limit=3');
+        const res = await fetch('/api/item/get?mobile=true&computer=false&CPU=false&All=true&limit=4');
         const data = await res.json();
         setMobileItem(data);
         setLoading(false);
@@ -30,7 +30,7 @@ export default function Home() {
     async function fetchComputer() {
       try {
         setLoading(true);
-        const res = await fetch('/api/item/get?searchTerm=&mobile=false&computer=true&CPU=false&All=true&limit=3');
+        const res = await fetch('/api/item/get?searchTerm=&mobile=false&computer=true&CPU=false&All=true&limit=8');
         const data = await res.json();
         setComputerItem(data);
         setLoading(false);
@@ -42,7 +42,7 @@ export default function Home() {
     async function fetchCPU() {
       try {
         setLoading(true);
-        const res = await fetch('/api/item/get?searchTerm=&mobile=false&computer=false&CPU=true&All=true&limit=3');
+        const res = await fetch('/api/item/get?searchTerm=&mobile=false&computer=false&CPU=true&All=true&limit=4');
         const data = await res.json();
         setElectronicsItem(data);
         setLoading(false);
@@ -62,28 +62,13 @@ export default function Home() {
         <h1 className="text-xl text-center">Loading...</h1>
       ) : (
         <>
-          <Swiper
-            navigation
-            className="shadow-lg shadow-gray m-2"
-            style={{ height: 'auto' }}  // Ensure Swiper has sufficient height
-          >
-            {computerItem.length > 0 && computerItem.map((computer) => (
-              <SwiperSlide key={computer._id} className="h-auto">
-                <div
-                  style={{
-                    background: `url(${computer.image}) center center / cover no-repeat`,
-                    height: '13rem'  // Adjust as needed
-                  }}
-                  className="w-full"
-                ></div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+          <Carousel computer={computerItem} />
 
-          <div className='max-w-6xl mx-auto p-3 flex flex-col gap-8 my-10'>
+          <div className='flex items-center justify-evenly  w-full flex-col gap-8 my-10'>
             {mobileItem.length > 0 && (
               <div>
-                <div className='my-3'>
+                <div className='mb-5 ml-8'>
+
                   <h2 className='text-2xl font-semibold text-slate-600'>Mobiles</h2>
                   <Link className='text-sm text-blue-800 hover:underline' to={'/search?mobile=true&CPU=false&All=true'}>Show more</Link>
                 </div>
@@ -96,10 +81,11 @@ export default function Home() {
             )}
           </div>
 
-          <div className='max-w-6xl mx-auto p-3 flex flex-col gap-8 my-10'>
+          <div className='flex items-center justify-evenly  w-full flex-col gap-8 my-10'>
             {electronicsItem.length > 0 && (
               <div>
-                <div className='my-3'>
+                <div className='mb-5 ml-8'>
+
                   <h2 className='text-2xl font-semibold text-slate-600'>CPU</h2>
                   <Link className='text-sm text-blue-800 hover:underline' to={'/search?CPU=true&All=true'}>Show more</Link>
                 </div>
@@ -112,10 +98,10 @@ export default function Home() {
             )}
           </div>
 
-          <div className='max-w-6xl mx-auto p-3 flex flex-col gap-8 my-10'>
+          <div className='flex items-center justify-evenly w-full flex-col gap-8 my-10'>
             {computerItem.length > 0 && (
               <div>
-                <div className='my-3'>
+                <div className='mb-5 ml-8'>
                   <h2 className='text-2xl font-semibold text-slate-600'>Computers</h2>
                   <Link className='text-sm text-blue-800 hover:underline' to={'/search?computer=true&All=true'}>Show more</Link>
                 </div>
