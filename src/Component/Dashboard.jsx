@@ -47,10 +47,12 @@ const Dashboard = () => {
 
   async function deleteItem(userId, itemId) {
     try {
-      const response = await fetch('/api/item/delete', {
+      const token = localStorage.getItem('token');
+      const response = await fetch('http://localhost:8080/api/item/delete', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `${token}`
         },
         body: JSON.stringify({ user: userId, item: itemId }),
       });
