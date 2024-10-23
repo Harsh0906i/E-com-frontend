@@ -16,14 +16,14 @@ export default function Oauth() {
             const provider = new GoogleAuthProvider();
             const auth = getAuth(app);
             const result = await signInWithPopup(auth, provider);
-            
+
             // Prepare user data to send to your backend
             const userData = {
                 name: result.user.displayName,
                 email: result.user.email,
                 photo: result.user.photoURL
             };
-
+            console.log(userData)
             const res = await fetch("/api/auth/google", {
                 method: 'POST',
                 headers: {
