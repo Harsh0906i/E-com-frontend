@@ -39,7 +39,7 @@ export default function Profile() {
       dispatch(signOutUserStart());
       const token = localStorage.getItem('token');
       const res = await fetch(`http://localhost:8080/api/auth/delete/${currentUser._id}`, {
-        method: 'POST',
+        method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `${token}`
