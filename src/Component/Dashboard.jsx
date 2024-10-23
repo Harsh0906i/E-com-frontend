@@ -61,7 +61,7 @@ const Dashboard = () => {
 
   return (
     <div className='m-4'>
-      {error && <Typography sx={{ color: 'red' }}>{error}</Typography>}
+      {loading && <Typography sx={{ color: 'black' }}> <p>Loading</p> </Typography>}
       {
         data.length > 0 ?
           <ul style={{ listStyleType: 'none', padding: 0 }} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
