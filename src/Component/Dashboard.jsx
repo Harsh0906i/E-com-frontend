@@ -27,9 +27,11 @@ const Dashboard = () => {
         if (!response.ok) {
           setloading(false)
           setError(result.message);
+          console.log(error)
         } else {
           setloading(false)
           setData(result);
+          console.log(data)
         }
       } catch (error) {
         setloading(false)
