@@ -1,35 +1,58 @@
-import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth"
-import { app } from "../Firebase/Firebase"
-import { useDispatch } from "react-redux"
-import { signInSuccess } from "../Redux/User/UserSlice";
+import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+import { app } from "../Firebase/Firebase";
+import { useDispatch } from "react-redux";
+import { signInSuccess, signInFaliure } from "../Redux/User/UserSlice"; // Make sure to import failure action
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+
 export default function Oauth() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const [loading, setloading] = useState(false)
+    const [loading, setLoading] = useState(false);
+
     async function HandleGoogle() {
         try {
-            setloading(true);
-            const provider = new GoogleAuthProvider()
-            const auth = getAuth(app)
-            const result = await signInWithPopup(auth, provider)
+            setLoading(true);
+            const provider = new GoogleAuthProvider();
+            const auth = getAuth(app);
+            const result = await signInWithPopup(auth, provider);
+            
+            // Prepare user data to send to your backend
+            const userData = {
+                name: result.user.displayName,
+                email: result.user.email,
+                photo: result.user.photoURL
+            };
+
             const res = await fetch("/api/auth/google", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ name: result.user.displayName, email: result.user.email, photo: result.user.photoURL })
-            })
+                body: JSON.stringify(userData)
+            });
+
             const data = await res.json();
-            setloading(false)
-            dispatch(signInSuccess(data));
-            navigate('/')
+            setLoading(false);
+
+            if (data.success) {
+                dispatch(signInSuccess(data.user)); // Dispatch user data on success
+                navigate('/'); // Redirect after successful sign-in
+            } else {
+                // Handle case where success is false
+                dispatch(signInFaliure(data.message)); // Dispatch failure action with error message
+                console.error(data.message); // Log the error for debugging
+            }
         } catch (error) {
-            console.log(error)
+            setLoading(false);
+            dispatch(signInFaliure(error.message)); // Dispatch failure action with error message
+            console.error("Sign-in error:", error); // Log the error for debugging
         }
     }
+
     return (
-        <button onClick={HandleGoogle} type="button" disabled={loading} className="bg-red-700 text-white p-3 rounded-lg uppercase hover:opacity-95">{loading ? 'Loading...' : 'continue with google'}</button>
-    )
+        <button onClick={HandleGoogle} type="button" disabled={loading} className="bg-red-700 text-white p-3 rounded-lg uppercase hover:opacity-95">
+            {loading ? 'Loading...' : 'Continue with Google'}
+        </button>
+    );
 }
