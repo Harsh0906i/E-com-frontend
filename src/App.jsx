@@ -24,11 +24,11 @@ function App() {
         <Route element={<Private />}>
           <Route path='/cart' element={<Cart />} />
           <Route path='/profile' element={<Profile />} />
-          <Route path='/dashboard/:id' element={<Dashboard/>}/>
+          <Route path='/dashboard/:id' element={<Dashboard />} />
         </Route>
         <Route path='/item/:itemid' element={<ShowProduct />} />
-        <Route path='/upload' element={<Upload/>}/>
-        <Route path='/admin/:id' element={<Admin/>} />
+        <Route path='/upload' element={<Upload />} />
+        <Route path='/admin/:id' element={<Admin />} />
       </Routes>
     </BrowserRouter>
   )
