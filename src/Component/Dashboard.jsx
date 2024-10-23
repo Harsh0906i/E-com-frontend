@@ -24,7 +24,7 @@ const Dashboard = () => {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
-            'Authorizatoin': token
+            'Authorization': `${token}`
           }
         });
         const result = await response.json();
