@@ -15,37 +15,48 @@ export default function Login() {
   setTimeout(() => {
     dispatch(signInFaliure());
   }, 3000);
+
   async function HandleSubmit(e) {
-    e.preventDefault()
+    e.preventDefault();
     try {
       dispatch(signInStart());
-      const res = await fetch('/api/auth/signin', {
+      const res = await fetch('http://localhost:8080/api/auth/signin', { // Ensure the URL is correct
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData)
-      })
-      const data = await res.json()
-      if (data.success === false) {
-        dispatch(signInFaliure(data.message))
+        body: JSON.stringify(formData),
+      });
+
+      // Check if response is okay
+      if (!res.ok) {
+        const errorText = await res.text(); // Read the response as text
+        throw new Error(errorText); // Throw an error with the response text
+      }
+
+      const data = await res.json();
+
+      // Check for success in the JSON response
+      if (!data.success) {
+        dispatch(signInFaliure(data.message));
         return;
       }
-      dispatch(signInSuccess(data))
+
+      dispatch(signInSuccess(data));
       navigate('/');
     } catch (error) {
-      dispatch(signInFaliure(error.message))
+      dispatch(signInFaliure(error.message)); // Handle both JSON and text errors
     }
-
   }
+
   return (
     <div className='p-3 max-w-lg mx-auto'>
       <h1 className='text-3xl text-center font-semibold my-7'>Sign In</h1>
       <form onSubmit={HandleSubmit} className='flex flex-col gap-4' >
-        <input type="email" required onChange={HandleChange} className='border p-3 rounded-lg' placeholder="Enter your email..." id="email" style={{'borderRadius':'15px'}} />
-        <input onChange={HandleChange} required type="password" className='border p-3 rounded-lg' placeholder="Enter password..." id="password"style={{'borderRadius':'15px'}} />
-        <button style={{'borderRadius':'15px'}} className="bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95">{loading ? 'Loading...' : 'Sign in'}</button>
-      <Oauth/>
+        <input type="email" required onChange={HandleChange} className='border p-3 rounded-lg' placeholder="Enter your email..." id="email" style={{ 'borderRadius': '15px' }} />
+        <input onChange={HandleChange} required type="password" className='border p-3 rounded-lg' placeholder="Enter password..." id="password" style={{ 'borderRadius': '15px' }} />
+        <button style={{ 'borderRadius': '15px' }} className="bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95">{loading ? 'Loading...' : 'Sign in'}</button>
+        <Oauth />
       </form>
       <div className="flex gap-2 mt-5">
         <p>Dont have an account?</p>
