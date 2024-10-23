@@ -43,6 +43,7 @@ export default function Signup() {
       navigate('/signin');
     } catch (error) {
       setLoading(false);
+      console.log(error)
       setError('An unexpected error occurred');
     }
   }
