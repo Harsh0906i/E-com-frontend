@@ -66,7 +66,7 @@ export default function Header() {
                     </Link>
                     <Link to={'/cart'}>
                         <button>
-                            <FaOpencart className="text-white w-6 h-6 hover:text-slate-800" />
+                            <FaOpencart className="text-white w-6 h-6 " />
                         </button>
                     </Link>
                     <Link to={'/Upload'}>
@@ -80,7 +80,7 @@ export default function Header() {
                                 className="rounded-full h-7 w-7 object-cover"
                             />
                         ) : (
-                            <li className="text-slate-700 hover:underline sm:inline ">
+                            <li className="text-white hover:underline sm:inline ">
                                 Sign-in
                             </li>
                         )}
