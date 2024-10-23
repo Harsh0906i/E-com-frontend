@@ -19,7 +19,10 @@ const Dashboard = () => {
     async function getUserItem() {
       try {
         setloading(true)
-        const response = await fetch(`/api/item/dashboard/${id}`);
+        const token = localStorage.getItem('token');
+        const response = await fetch(`/api/item/dashboard/${id}`, {
+          'Authorizatoin': token
+        });
         const result = await response.json();
         if (!response.ok) {
           setloading(false)
