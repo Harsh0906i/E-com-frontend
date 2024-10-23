@@ -21,7 +21,11 @@ const Dashboard = () => {
         setloading(true)
         const token = localStorage.getItem('token');
         const response = await fetch(`http://localhost:8080/api/item/dashboard/${id}`, {
-          'Authorizatoin': token
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorizatoin': token
+          }
         });
         const result = await response.json();
         if (!response.ok) {
