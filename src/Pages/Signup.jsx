@@ -25,12 +25,13 @@ export default function Signup() {
       const res = await fetch('/api/auth/signup', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(formData),
       });
 
-      const data = await res.json();
+      const data = await res.json(); // This will now always work if the backend sends valid JSON
+
       setLoading(false);
 
       if (!res.ok) {
@@ -42,7 +43,7 @@ export default function Signup() {
       navigate('/signin');
     } catch (error) {
       setLoading(false);
-      setError(error.message || 'An unexpected error occurred');
+      setError('An unexpected error occurred');
     }
   }
 
