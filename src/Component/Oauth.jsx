@@ -24,7 +24,7 @@ export default function Oauth() {
                 photo: result.user.photoURL
             };
             console.log(userData)
-            const res = await fetch("/api/auth/google", {
+            const res = await fetch("http://localhost:8080/api/auth/google", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -37,15 +37,16 @@ export default function Oauth() {
 
             if (data.success) {
                 dispatch(signInSuccess(data.user)); // Dispatch user data on success
+                localStorage.setItem('token', data.token);
                 navigate('/'); // Redirect after successful sign-in
             } else {
                 // Handle case where success is false
-                dispatch(signInFaliure(data.message)); // Dispatch failure action with error message
-                console.error(data.message); // Log the error for debugging
+                dispatch(signInFaliure(data)); // Dispatch failure action with error message
+                console.error(data); // Log the error for debugging
             }
         } catch (error) {
             setLoading(false);
-            dispatch(signInFaliure(error.message)); // Dispatch failure action with error message
+            dispatch(signInFaliure(error)); // Dispatch failure action with error message
             console.error("Sign-in error:", error); // Log the error for debugging
         }
     }
