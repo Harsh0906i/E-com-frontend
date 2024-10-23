@@ -42,7 +42,7 @@ export default function Login() {
         return;
       }
 
-      dispatch(signInSuccess(data));
+      dispatch(signInSuccess(data.user));
       navigate('/');
     } catch (error) {
       dispatch(signInFaliure(error.message)); // Handle both JSON and text errors
