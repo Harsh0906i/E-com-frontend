@@ -35,7 +35,7 @@ export default function Login() {
       }
 
       const data = await res.json();
-
+      localStorage.setItem('token', data.token);
       // Check for success in the JSON response
       if (!data.success) {
         dispatch(signInFaliure(data.message));

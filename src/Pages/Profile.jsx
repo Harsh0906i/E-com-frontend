@@ -11,10 +11,12 @@ export default function Profile() {
   async function HandleSignOut() {
     try {
       dispatch(signOutUserStart());
+      const token = localStorage.getItem('token');
       const res = await fetch('http://localhost:8080/api/auth/signout', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `${token}`
         },
       });
 
@@ -35,10 +37,12 @@ export default function Profile() {
   async function HandleDelete() {
     try {
       dispatch(signOutUserStart());
+      const token = localStorage.getItem('token');
       const res = await fetch('http://localhost:8080/api/auth/signout', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `${token}`
         },
       });
 
