@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export default function Profile() {
   const dispatch = useDispatch()
   const { currentUser, loading } = useSelector((state) => state.user1)
-  console.log(currentUser.username)
+  console.log(currentUser.user.username)
   console.log(currentUser.email)
   console.log(currentUser.avatar)
   console.log(currentUser)
