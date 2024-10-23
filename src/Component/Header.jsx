@@ -109,7 +109,7 @@ export default function Header() {
                     {currentUser ? (
                         <img className="rounded-full h-7 w-7 object-cover" src={currentUser.avatar} alt={<IoPerson />} />
                     ) :
-                        (<li className="text-slate-700 hover:underline sm:inline text-sm">Sign-in</li>)
+                        (<li className="text-white hover:underline sm:inline text-sm">Sign-in</li>)
                     }
                 </Link>
 
