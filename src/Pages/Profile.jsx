@@ -8,6 +8,7 @@ export default function Profile() {
   console.log(currentUser.username)
   console.log(currentUser.email)
   console.log(currentUser.avatar)
+  console.log(currentUser)
   const [deleteState, setDeleteState] = useState(false);
 
   async function HandleSignOut() {
