@@ -49,12 +49,12 @@ export default function Profile() {
       const data = await res.json();
 
       // Check if the success is false and handle the error
-      if (!data.success) {
+      if (!res.ok) {
         dispatch(signOutUserFaliure(data.message));
         return;
       }
 
-      dispatch(signOutUserSuccess(data));
+      dispatch(signOutUserSuccess(data.message));
     } catch (error) {
       dispatch(signOutUserFaliure(error.message));
     }
