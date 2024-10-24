@@ -20,7 +20,7 @@ const Dashboard = () => {
       try {
         setloading(true)
         const token = localStorage.getItem('token');
-        const response = await fetch(`http://localhost:8080/api/item/dashboard/${id}`, {
+        const response = await fetch(`https://e-backend-two.vercel.app/api/item/dashboard/${id}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
