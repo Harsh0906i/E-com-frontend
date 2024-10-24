@@ -48,8 +48,9 @@ export default function ShowSearchesItem({ items }) {
         <div className='flex justify-evenly'>
           <div className="p-3 flex flex-col gap-2 w-full truncate">
             <p className='text-lg font-semibold text-slate-700 truncate'>{items.name}</p>
-            <p className='text-sm text-gray-600 truncate'><span className='text-red-700 font-semibold'>RAM</span> : {items.storage.RAM} GB</p>
-            <p className='text-sm text-gray-600 truncate'><span className='text-red-700 font-semibold'>ROM</span> : {items.storage.ROM === 1024 ? ' 1 TB ' : ` ${items.storage.ROM} GB `}</p>
+            <p className='text-sm text-gray-600 truncate'><span className='text-red-700 font-semibold'>RAM</span> : {items.storage.RAM >= 1024 ? `${items.storage.RAM / 1024}TB` : `${items.storage.RAM} GB`}</p>
+            <p className='text-sm text-gray-600 truncate'><span className='text-red-700 font-semibold'>ROM</span> : {items.storage.ROM >= 1024 ? `${items.storage.ROM / 1024}TB` : `${items.storage.ROM} GB`}
+            </p>
           </div>
           <div className='my-2 rounded-lg'>
             <span className='text-sm font-semibold text-slate-700'>

@@ -13,7 +13,7 @@ export default function Item({ item }) {
                     <p className="text-lg font-semibold text-slate-700 truncate ">{item.name}</p>
 
                     <p className="text-sm text-gray-600 truncate">
-                        RAM : {item.storage.RAM} GB
+                        ROM : {item.storage.RAM >= 1024 ? `${item.storage.RAM / 1024}TB` : `${item.storage.RAM} GB`}
                     </p>
                     <p className="text-sm text-gray-600 line-clamp-2">
                         ROM : {item.storage.ROM >= 1024 ? `${item.storage.ROM / 1024}TB` : `${item.storage.ROM} GB`}
