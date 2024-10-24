@@ -51,7 +51,7 @@ export default function ShowSearchesItem({ items }) {
             <p className='text-sm text-gray-600 truncate'><span className='text-red-700 font-semibold'>RAM</span> : {items.storage.RAM} GB</p>
             <p className='text-sm text-gray-600 truncate'><span className='text-red-700 font-semibold'>ROM</span> : {items.storage.ROM === 1024 ? ' 1 TB ' : ` ${items.storage.ROM} GB `}</p>
           </div>
-          <div className='m-2 rounded-lg'>
+          <div className='my-2 rounded-lg'>
             <span className='text-sm font-semibold text-slate-700'>
               {currentUser ? <Link type='button' style={{ 'borderRadius': '10px' }} className='text-white shadow-lg bg-slate-800 hover:opacity-85 p-2 rounded-lg px-5 m-2' onClick={(e) => { addToCart(items); e.preventDefault(); handleClick() }} >Add</Link> : <Link to={'/signin'} className='text-red-700 text-sm'><button>Sign In</button></Link>}
             </span>
