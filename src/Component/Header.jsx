@@ -86,7 +86,7 @@ export default function Header() {
                     </Link>
                 </ul>
 
-                <button onClick={toggleMenu} className="text-slate-700 focus:outline-none ml-2 sm:hidden">
+                <button onClick={toggleMenu} className="text-white focus:outline-none ml-2 sm:hidden">
                     {isOpen ? <FaTimes size={20} /> : <FaBars size={20} />}
                 </button>
             </div>
@@ -108,7 +108,7 @@ export default function Header() {
                     {currentUser ? (
                         <img className="rounded-full h-7 w-7 object-cover" src={currentUser.avatar} alt={<IoPerson />} />
                     ) :
-                        (<li className="text-white hover:underline sm:inline text-sm">Sign-in</li>)
+                        (<li className="text-slate-700 hover:underline sm:inline text-sm">Sign-in</li>)
                     }
                 </Link>
 
