@@ -29,7 +29,7 @@ export default function ShowProduct() {
             try {
                 const res = await fetch(`http://localhost:8080/api/item/getItem/${params.itemid}`);
                 const data = await res.json();
-                if (data.success === false) {
+                if (!data.ok) {
                     setloading(false);
                     return;
                 }
