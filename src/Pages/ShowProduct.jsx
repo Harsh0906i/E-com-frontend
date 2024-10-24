@@ -28,6 +28,7 @@ export default function ShowProduct() {
                 const res = await fetch(`http://localhost:8080/api/item/getItem/${params.itemid}`);
                 const data = await res.json();
                 if (!data.ok) {
+                console.log(data)
                     setloading(false);
                     return;
                 }
@@ -37,6 +38,8 @@ export default function ShowProduct() {
                 seterr(false);
             } catch (error) {
                 seterr(true);
+                console.log(data)
+
                 setloading(false);
             }
         }
