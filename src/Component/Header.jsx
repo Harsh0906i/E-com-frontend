@@ -41,7 +41,7 @@ export default function Header() {
             <div className="flex items-center max-w-6xl mx-auto p-3 justify-between">
                 <Link to={'/'} className="font-semibold flex flex-col items-center">
                     <IoLogoElectron className="text-white" />
-                    <span className="text-xs sm:text-base text-white">E-commerce</span>
+                    <span className="text-xs sm:text-base text-white">ElectronicsOnly</span>
                 </Link>
 
                 {/* Centered search bar */}
