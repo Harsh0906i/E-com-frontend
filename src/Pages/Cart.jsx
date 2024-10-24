@@ -59,26 +59,18 @@ const Cart = () => {
               <hr />
 
               <p className='mt-6 text-lg text-center font-semibold'>
-                {cart.some(item => item.userId === currentUser._id && item.discountedPrice) ? (
-                  <>
-                    Total Price: ₹
-                    {new Intl.NumberFormat('en-IN').format(
-                      cart
-                        .filter(item => item.userId === currentUser._id)
-                        .reduce((total, item) => total + item.discountedPrice, 0)
-                    )}
-                  </>
-                ) : (
-                  <>
-                    Total Price: ₹
-                    {new Intl.NumberFormat('en-IN').format(
-                      cart
-                        .filter(item => item.userId === currentUser._id)
-                        .reduce((total, item) => total + item.regularPrice, 0)
-                    )}
-                  </>
+                Total Price: ₹
+                {new Intl.NumberFormat('en-IN').format(
+                  cart
+                    .filter(item => item.userId === currentUser._id)
+                    .reduce((total, item) => {
+                      // Use discountedPrice if available, otherwise fallback to regularPrice or 0
+                      const price = item.discountedPrice ?? item.regularPrice ?? 0;
+                      return total + price;
+                    }, 0)
                 )}
               </p>
+
             </>
           )}
         </div>
