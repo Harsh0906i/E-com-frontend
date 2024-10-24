@@ -138,14 +138,6 @@ export default function ShowProduct() {
                             </CardContent>
                             <Button className="">{currentUser ? <button onClick={() => { { addToCart() }; handleClick() }}>Add to cart</button> : <Link className="text-red-700 " to={'/login'}>Sign in to add to cart</Link>}</Button>
                         </Card>
-                        <div className="flex flex-col ">
-                            <form>
-                                <label>Apply token for discount!</label>
-                                <input type="text" placeholder="TOKEN..." />
-                                <button onClick={handleToken} type="submit" >{tokenLoading ? 'Applying...' : 'Apply'}</button>
-                            </form>
-                            {token && <p className="text-red-500 text-center">{token}</p>}
-                        </div>
                     </div>
                     <div>
                         <Snackbar className='text-white'
