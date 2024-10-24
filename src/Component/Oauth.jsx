@@ -24,7 +24,7 @@ export default function Oauth() {
                 photo: result.user.photoURL
             };
             console.log(userData)
-            const res = await fetch("http://localhost:8080/api/auth/google", {
+            const res = await fetch("https://e-backend-two.vercel.app/api/auth/google", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

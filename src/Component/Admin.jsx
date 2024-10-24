@@ -8,7 +8,7 @@ export default function Admin() {
 
     const handleAction = async (action) => {
         try {
-            const response = await fetch(`/api/item/admin`, {
+            const response = await fetch(`http://localhost:8080/api/item/admin`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

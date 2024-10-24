@@ -12,7 +12,7 @@ export default function Profile() {
     try {
       dispatch(signOutUserStart());
       const token = localStorage.getItem('token');
-      const res = await fetch('http://localhost:8080/api/auth/signout', {
+      const res = await fetch('https://e-backend-two.vercel.app/api/auth/signout', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -38,7 +38,7 @@ export default function Profile() {
     try {
       dispatch(signOutUserStart());
       const token = localStorage.getItem('token');
-      const res = await fetch(`http://localhost:8080/api/auth/delete/${currentUser._id}`, {
+      const res = await fetch(`https://e-backend-two.vercel.app/api/auth/delete/${currentUser._id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',

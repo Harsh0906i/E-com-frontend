@@ -29,7 +29,7 @@ export default function ShowProduct() {
             try {
                 // Make the fetch request
                 setloading(true)
-                const res = await fetch(`http://localhost:8080/api/item/getItem/${params.itemid}`);
+                const res = await fetch(`https://e-backend-two.vercel.app/api/item/getItem/${params.itemid}`);
                 const data = await res.json(); // Parse the JSON response
 
                 if (!res.ok) {
@@ -56,7 +56,7 @@ export default function ShowProduct() {
     }, [params.itemid]);
 
     async function addToCart() {
-        const res = await fetch(`http://localhost:8080/api/item/getItem/${params.itemid}`);
+        const res = await fetch(`https://e-backend-two.vercel.app/api/item/getItem/${params.itemid}`);
         const data = await res.json();
         dispatch(addToCartSuccess({ productData: data, user: currentUser._id }));
     }

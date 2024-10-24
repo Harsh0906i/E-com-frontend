@@ -3,7 +3,6 @@ import { FaOpencart, FaSearch } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useSelector } from "react-redux";
-import { SiStmicroelectronics } from "react-icons/si";
 import { IoPerson } from "react-icons/io5";
 import { IoLogoElectron } from "react-icons/io5";
 
