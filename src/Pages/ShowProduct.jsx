@@ -21,8 +21,6 @@ export default function ShowProduct() {
     const [err, seterr] = useState(false);
     const params = useParams();
     const [open, setOpen] = React.useState(false);
-    console.log(cart)
-
 
     useEffect(() => {
         async function fetchItem() {
@@ -35,6 +33,7 @@ export default function ShowProduct() {
                 }
                 setitem(data);
                 setloading(false);
+                console.log(data)
                 seterr(false);
             } catch (error) {
                 seterr(true);
