@@ -53,7 +53,7 @@ export default function ShowSearchesItem({ items }) {
           </div>
           <div className='m-2 rounded-lg'>
             <span className='text-sm font-semibold text-slate-700'>
-              {currentUser ? <Link type='button' style={{'borderRadius':'10px'}} className='text-white shadow-lg bg-slate-800 hover:opacity-85 p-2 rounded-lg px-5 m-2' onClick={(e) => { addToCart(items); e.preventDefault(); handleClick() }} >Add</Link> : <Link to={'/signin'} className='text-red-700 text-sm'><span className="text-red-700">Sign in to add to cart</span></Link>}
+              {currentUser ? <Link type='button' style={{'borderRadius':'10px'}} className='text-white shadow-lg bg-slate-800 hover:opacity-85 p-2 rounded-lg px-5 m-2' onClick={(e) => { addToCart(items); e.preventDefault(); handleClick() }} >Add</Link> : <Link to={'/signin'} className='text-red-700 text-sm'><span className="text-red-700">Sign in</span></Link>}
             </span>
           </div>
         </div>
