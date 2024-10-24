@@ -136,7 +136,7 @@ export default function ShowProduct() {
                                     </Typography>
                                 </Typography>
                             </CardContent>
-                            <Button className="">{currentUser ? <button onClick={() => { { addToCart() }; handleClick() }}>Add to cart</button> : <Link className="text-red-700 " to={'/login'}>Sign in to add to cart</Link>}</Button>
+                            <Button className="">{currentUser ? <button onClick={() => { { addToCart() }; handleClick() }}>Add to cart</button> : <Link className="text-red-700 " to={'/signin'}>Sign in to add to cart</Link>}</Button>
                         </Card>
                     </div>
                     <div>
