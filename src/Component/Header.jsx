@@ -101,7 +101,7 @@ export default function Header() {
                         <FaOpencart className="text-slate-600 w-4 h-4 hover:text-slate-800" /><span>(Cart)</span>
                     </button>
                 </Link>
-                <Link to={'/Upload/:id'} className="p-3">
+                <Link to={'/Upload'} className="p-3">
                     <li className="text-slate-700 hover:underline sm:inline text-sm">Upload</li>
                 </Link>
                 <Link to={'/profile'} className="p-3">
