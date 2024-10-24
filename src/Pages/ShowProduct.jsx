@@ -26,24 +26,31 @@ export default function ShowProduct() {
     useEffect(() => {
         async function fetchItem() {
             try {
+                // Make the fetch request
                 const res = await fetch(`http://localhost:8080/api/item/getItem/${params.itemid}`);
-                const data = await res.json();
+                const data = await res.json(); // Parse the JSON response
+
                 if (!res.ok) {
-                    console.log('error data', data)
-                    setloading(false);
-                    return;
+                    // If the response is not OK, handle the error based on the returned status
+                    console.error('Fetch error:', data);
+                    setloading(false);  // Stop loading
+                    seterr(true);  // Set error state to true
+                    return;  // Exit the function
                 }
-                setitem('good data', data);
-                setloading(false);
-                console.log(data)
-                seterr(false);
+
+                // If response is OK, set the fetched data in state
+                setitem(data);  // Pass the correct data
+                setloading(false);  // Stop loading
+                seterr(false);  // Clear error state
+                console.log('Fetched data:', data);  // Log the fetched data
             } catch (error) {
-                seterr(true);
-                console.log('internal error data', data)
-                setloading(false);
+                // Catch any internal errors (network, parsing issues, etc.)
+                console.error('Internal fetch error:', error);  // Log the error
+                seterr(true);  // Set error state to true
+                setloading(false);  // Stop loading
             }
         }
-        fetchItem();
+        fetchItem()
     }, [params.itemid]);
 
     async function addToCart() {
