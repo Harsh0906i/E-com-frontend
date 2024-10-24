@@ -24,7 +24,7 @@ export default function ShowItem() {
         UrlParams.set('startIndex', startIndex);
         const searchQuery = UrlParams.toString();
         setshowloading(true)
-        const res = await fetch(`/api/item/get?${searchQuery}`);
+        const res = await fetch(`http://localhost:8080/api/item/get?${searchQuery}`);
         const data = await res.json();
         if (data.length < 9) {
             setshowMore(false)
@@ -84,7 +84,7 @@ export default function ShowItem() {
             setloading(true)
             try {
                 const searchQuery = newurl.toString();
-                const res = await fetch(`/api/Item/get?${searchQuery}`);
+                const res = await fetch(`http://localhost:8080/api/Item/get?${searchQuery}`);
                 const data = await res.json();
                 setItem(data);
                 setloading(false);
