@@ -28,7 +28,7 @@ export default function ShowProduct() {
             try {
                 const res = await fetch(`http://localhost:8080/api/item/getItem/${params.itemid}`);
                 const data = await res.json();
-                if (!data.ok) {
+                if (!res.ok) {
                     console.log('error data', data)
                     setloading(false);
                     return;
