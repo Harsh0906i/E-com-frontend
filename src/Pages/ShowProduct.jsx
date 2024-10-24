@@ -21,6 +21,7 @@ export default function ShowProduct() {
     const [err, seterr] = useState(false);
     const params = useParams();
     const [open, setOpen] = React.useState(false);
+    console.log('item', item)
 
     useEffect(() => {
         async function fetchItem() {
@@ -39,7 +40,6 @@ export default function ShowProduct() {
             } catch (error) {
                 seterr(true);
                 console.log(data)
-
                 setloading(false);
             }
         }
