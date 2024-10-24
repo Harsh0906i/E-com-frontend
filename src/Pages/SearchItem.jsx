@@ -100,7 +100,7 @@ export default function ShowItem() {
                 <form onSubmit={HandleSubmit} className="flex flex-col gap-8">
                     <div className="flex items-center gap-2">
                         <label className="whiteSpace-nowrap font-semibold">SearchTerm</label>
-                        <input type="text" id="search2" name="search2" value={sideBarData.searchTerm} onChange={HandleChange} placeholder="Search..." className="border rounded-lg p-3 w-full" />
+                        <input type="text" id="search2" name="search2" style={{ 'borderRadius': '10px' }} value={sideBarData.searchTerm} onChange={HandleChange} placeholder="Search..." className="border rounded-lg p-3 w-full" />
                     </div>
                     <div className="flex gap-2 flex-wrap items-center">
                         <label className="font-semibold">Types:</label>
@@ -121,7 +121,7 @@ export default function ShowItem() {
                             <span>CPU</span>
                         </div>
                     </div>
-                    <button className="bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95">Search</button>
+                    <button className="bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95" style={{ 'borderRadius': '10px' }}>Search</button>
                 </form>
             </div>
             <div className="flex-1">
