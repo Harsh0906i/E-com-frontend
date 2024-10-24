@@ -42,7 +42,7 @@ export default function ShowSearchesItem({ items }) {
   }
 
   return (
-    <div className="bg-white shadow-md hover:shadow-lg transition-shadow overflow-hidden rounded-lg w-full sm:w-[330px]">
+    <div style={{'borderRadius':'10px'}} className="bg-white shadow-md hover:shadow-lg transition-shadow overflow-hidden rounded-lg w-full sm:w-[330px]">
       <Link to={`/item/${items._id}`}>
         <img src={items.image} alt="Photo" className="h-[320px] sm:h-[220px] w-full object-cover hover:scale-105 transition-scale duration-300" />
         <div className='flex'>
@@ -53,7 +53,7 @@ export default function ShowSearchesItem({ items }) {
           </div>
           <div className='m-2 rounded-lg'>
             <span className='text-sm font-semibold text-slate-700'>
-              {currentUser ? <Link type='button' className='text-white shadow-lg bg-slate-800 hover:opacity-85 p-2 rounded-lg px-5 m-2' onClick={(e) => { addToCart(items); e.preventDefault(); handleClick() }} >Add</Link> : <p className='text-red-700'><span className="text-red-700">Sign in to add to cart</span></p>}
+              {currentUser ? <Link type='button' style={{'borderRadius':'10px'}} className='text-white shadow-lg bg-slate-800 hover:opacity-85 p-2 rounded-lg px-5 m-2' onClick={(e) => { addToCart(items); e.preventDefault(); handleClick() }} >Add</Link> : <Link to={'/signin'} className='text-red-700'><span className="text-red-700">Sign in to add to cart</span></Link>}
             </span>
           </div>
         </div>
