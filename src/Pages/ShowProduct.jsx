@@ -29,17 +29,17 @@ export default function ShowProduct() {
                 const res = await fetch(`http://localhost:8080/api/item/getItem/${params.itemid}`);
                 const data = await res.json();
                 if (!data.ok) {
-                console.log(data)
+                    console.log('error data', data)
                     setloading(false);
                     return;
                 }
-                setitem(data);
+                setitem('good data', data);
                 setloading(false);
                 console.log(data)
                 seterr(false);
             } catch (error) {
                 seterr(true);
-                console.log(data)
+                console.log('internal error data', data)
                 setloading(false);
             }
         }
@@ -104,7 +104,7 @@ export default function ShowProduct() {
                             <Typography component="span" variant="body2" color="text.secondary">
                                 {item.discountedPrice ? (
                                     <>
-                                    Regular Price: <span className="line-through">₹{new Intl.NumberFormat('en-IN').format(item.regularPrice)}</span>
+                                        Regular Price: <span className="line-through">₹{new Intl.NumberFormat('en-IN').format(item.regularPrice)}</span>
                                         <div>
                                             Discounted Price: ₹{new Intl.NumberFormat('en-IN').format(item.discountedPrice)}
                                         </div>
