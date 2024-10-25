@@ -7,7 +7,11 @@ export default function Admin() {
     const { id } = useParams()
     const { currentUser } = useSelector((state) => state.user1)
     const [data, setData] = useState([])
-    console.log('data',data)
+
+    data.map((item) => (
+        console.log(item.name)
+        // console.log(item)
+    ))
 
     useEffect(() => {
         async function fetchuser() {
@@ -47,11 +51,7 @@ export default function Admin() {
 
     return (
         <div className='flex items-center justify-center m-4 p-4'>
-            <div>
-                {data.map((item) => (
-                    <p>{item.name}</p>
-                ))}
-            </div>
+
             <button onClick={() => handleAction('accept')} className='bg-green-600 text-white rounded-full p-3'>Accept</button>
             <button onClick={() => handleAction('reject')} className='bg-red-600 text-white rounded-full p-3'>Reject</button>
 
