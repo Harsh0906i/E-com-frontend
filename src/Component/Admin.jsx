@@ -61,6 +61,7 @@ export default function Admin() {
             }
 
             const result = await response.json()
+            setStatus(result.message)
             setloading(false)
 
         } catch (error) {
@@ -93,7 +94,7 @@ export default function Admin() {
                         }
 
                     </div >
-            }
+            }{status&& <p className='text-center'>{status}</p> }
         </>
     );
 }
