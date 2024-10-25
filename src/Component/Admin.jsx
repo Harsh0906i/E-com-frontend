@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 export default function Admin() {
     const [status, setStatus] = useState(null);
     const { id } = useParams()
+    const { currentUser } = useSelector((state) => state.user1)
+
 
     const handleAction = async (action) => {
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`https://e-backend-two.vercel.app/api/item/admin`, {
+            const response = await fetch(`https://e-backend-two.vercel.app/api/item/admin/${currentUser._id}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -25,7 +28,7 @@ export default function Admin() {
             }
 
             const result = await response.json();
-            console.log('result',result)
+            console.log('result', result)
             setStatus(`Product ${action === 'accept' ? 'accepted' : 'rejected'} successfully!`);
         } catch (error) {
             setStatus(`Error: ${error.message}`);
