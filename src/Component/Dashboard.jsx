@@ -72,7 +72,7 @@ const Dashboard = () => {
 
   return (
     <div className='m-4'>
-      {loading && <Typography sx={{ color: 'black' }}> <p>Loading</p> </Typography>}
+      {loading && <Typography sx={{ color: 'black' }} className='text-center' > <p>Loading...</p> </Typography>}
       {
         data.length > 0 ?
           <ul style={{ listStyleType: 'none', padding: 0 }} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -119,7 +119,7 @@ const Dashboard = () => {
             ) : (
               <p>No data available.</p>
             )}
-          </ul> : <p className='text-center'>No item found! upload atleast one Item! <Link to={`/Upload`} className='text-blue-300'>-Upload</Link></p>
+          </ul> : !loading && <p className='text-center'>No item found! upload atleast one Item! <Link to={`/Upload`} className='text-blue-300'>-Upload</Link></p>
       }
     </div>
   );
