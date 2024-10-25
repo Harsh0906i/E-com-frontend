@@ -7,10 +7,6 @@ export default function Admin() {
     const { id } = useParams()
     const { currentUser } = useSelector((state) => state.user1)
     const [data, setData] = useState([])
-    console.log(data)
-    console.log(typeof (data))
-
-
 
     useEffect(() => {
         async function fetchuser() {
@@ -22,10 +18,6 @@ export default function Admin() {
                         'Content-Type': 'application/json',
                         'Authorization': `${token}`
                     },
-                    // body: JSON.stringify({
-                    //     action: 'reject',
-                    //     productId: id,
-                    // }),
                 });
 
                 if (!response.ok) {
@@ -33,9 +25,7 @@ export default function Admin() {
                 }
 
                 const result = await response.json();
-                console.log('result', result)
                 setData(result)
-                // setStatus(`Product ${action === 'accept' ? 'accepted' : 'rejected'} successfully!`);
             } catch (error) {
                 setStatus(`Error: ${error.message}`);
             }
@@ -45,20 +35,30 @@ export default function Admin() {
 
 
     const handleAction = async (action, productId) => {
-        const token = localStorage.getItem('token');
-        const response = await fetch(`https://e-backend-two.vercel.app/api/item/admin/delete`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `${token}`
-            },
-            body: JSON.stringify({
-                action: action,
-                productId: productId,
-            }),
-        });
-        const result = await response.json()
-        console.log('data isss: ', result)
+        try {
+            const token = localStorage.getItem('token');
+            const response = await fetch(`https://e-backend-two.vercel.app/api/item/admin/delete`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `${token}`
+                },
+                body: JSON.stringify({
+                    action: action,
+                    productId: productId,
+                }),
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to perform action');
+            }
+            
+            const result = await response.json()
+
+        } catch (error) {
+
+        }
+
     };
 
     return (
