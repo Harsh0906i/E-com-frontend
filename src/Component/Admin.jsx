@@ -7,6 +7,8 @@ export default function Admin() {
     const { id } = useParams()
     const { currentUser } = useSelector((state) => state.user1)
     const [data, setData] = useState([])
+    console.log(data)
+    console.log(typeof(data))
 
     // data.map((item) => (
     //     console.log(item.name)
