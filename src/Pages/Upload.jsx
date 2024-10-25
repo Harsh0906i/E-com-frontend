@@ -41,7 +41,7 @@ const Upload = () => {
   };
 
   setTimeout(() => {
-    if(error){
+    if (error) {
       setError(null)
     }
   }, 3000);
@@ -90,10 +90,10 @@ const Upload = () => {
       setReceived(result);
       setFormData({});
       setProductType('none');
-      setError('Form submitted successfully!');
       if (currentUser.isAdmin === 'false') {
         setError('Thanks for uploading! Our admin will review your item and get back to you shortly.')
       }
+      setError('Form submitted successfully!');
     } catch (error) {
       setError(error.message);
     } finally {
