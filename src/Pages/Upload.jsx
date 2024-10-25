@@ -76,7 +76,7 @@ const Upload = () => {
 
     try {
       setLoading(true);
-      const response = await fetch(`http://localhost:8080/api/item/sell/${currentUser._id}`, {
+      const response = await fetch(`https://e-backend-two.vercel.app/api/item/sell/${currentUser._id}`, {
         method: 'POST',
         body: formDataToSend,
       });
