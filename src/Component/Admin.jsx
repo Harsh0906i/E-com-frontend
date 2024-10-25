@@ -7,6 +7,7 @@ export default function Admin() {
     const { id } = useParams()
     const { currentUser } = useSelector((state) => state.user1)
     const [data, setData] = useState([])
+    console.log('data',data)
 
     useEffect(() => {
         async function fetchuser() {
@@ -54,7 +55,7 @@ export default function Admin() {
             <button onClick={() => handleAction('accept')} className='bg-green-600 text-white rounded-full p-3'>Accept</button>
             <button onClick={() => handleAction('reject')} className='bg-red-600 text-white rounded-full p-3'>Reject</button>
 
-            {status && <p className='text-center text-gray-500'>{status}</p>}
+            {/* {status && <p className='text-center text-gray-500'>{status}</p>} */}
         </div>
     );
 }
