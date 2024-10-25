@@ -57,7 +57,7 @@ export default function ShowSearchesItem({ items }) {
               {currentUser ?
                 <Link type='button' style={{ 'borderRadius': '10px' }} className='text-white shadow-lg bg-slate-800 hover:opacity-85 p-2 rounded-lg px-5 m-2' onClick={(e) => { addToCart(items); e.preventDefault(); handleClick() }} >Add</Link>
                 :
-                <Link to={'/signin'} className='text-red-700 bg-slate-500 text-sm'>Sign In</Link>
+                <Link to={'/signin'} className='text-red-700 bg-slate-500 text-sm'><p>Sign In</p></Link>
               }
             </span>
           </div>
