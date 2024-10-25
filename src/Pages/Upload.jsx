@@ -73,7 +73,6 @@ const Upload = () => {
     if (showDiscountedPrice && formData.discountedPrice) {
       formDataToSend.append('discountedPrice', formData.discountedPrice);
     }
-    console.log(formDataToSend)
 
     try {
       setLoading(true);
@@ -95,7 +94,7 @@ const Upload = () => {
       }
       setError('Form submitted successfully!');
     } catch (error) {
-      setError(error.message);
+      setError('error.message');
     } finally {
       setLoading(false);
     }
