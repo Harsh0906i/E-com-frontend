@@ -17,9 +17,12 @@ const Carousel = ({ computer }) => {
             if (carouselRef.current) {
                 const maxScrollLeft = carouselRef.current.scrollWidth - carouselRef.current.clientWidth;
                 if (carouselRef.current.scrollLeft < maxScrollLeft) {
-                    carouselRef.current.scrollLeft += carouselRef.current.clientWidth;
+                    carouselRef.current.scrollTo({
+                        left: carouselRef.current.scrollLeft + carouselRef.current.clientWidth,
+                        behavior: "smooth",
+                    });
                 } else {
-                    carouselRef.current.scrollLeft = 0; // Reset scroll to the start
+                    carouselRef.current.scrollTo({ left: 0, behavior: "smooth" });
                 }
             }
         };
