@@ -76,31 +76,47 @@ const Upload = () => {
 
     try {
       setLoading(true);
-      const response = await fetch(`https://e-backend-two.vercel.app/api/item/sell/${currentUser._id}`, {
-        method: 'POST',
-        body: formDataToSend,
-      });
 
-      if (!response.ok) {
-        throw new Error('Error uploading product');
-      }
+      let response;
 
-      const result = await response.json();
-      setReceived(result);
-      setFormData({});
-      setProductType('none');
-      {
-        currentUser.isAdmin === 'false' ?
-        setError('Thanks for uploading! Our admin will review your item and get back to you shortly.')
-        :
+      if (currentUser.isAdmin === 'true') {
+        // Admin upload
+        response = await fetch(`https://e-backend-two.vercel.app/api/item/sell/${currentUser._id}`, {
+          method: 'POST',
+          body: formDataToSend,
+        });
+
+        if (!response.ok) {
+          throw new Error('Error uploading product');
+        }
+
+        const result = await response.json();
+        setReceived(result);
+        setFormData({});
+        setProductType('none');
         setError('Form submitted successfully!');
+      } else {
+        // Non-admin request
+        response = await fetch(`https://e-backend-two.vercel.app/api/item/request/${currentUser._id}`, {
+          method: 'POST',
+          body: formDataToSend,
+        });
+
+        if (!response.ok) {
+          throw new Error('Error uploading product');
+        }
+
+        const result = await response.json();
+        setReceived(result);
+        setFormData({});
+        setProductType('none');
+        setError('Thanks for uploading! Our admin will review your item and get back to you shortly.');
       }
     } catch (error) {
       setError(error.message);
     } finally {
       setLoading(false);
     }
-
   };
 
   return (
