@@ -10,10 +10,10 @@ export default function Admin() {
     console.log(data)
     console.log(typeof(data))
 
-    // data.map((item) => (
-    //     console.log(item.name)
-    //     // console.log(item)
-    // ))
+    data.map((item) => (
+        console.log(item.name)
+        // console.log(item)
+    ))
 
     useEffect(() => {
         async function fetchuser() {
