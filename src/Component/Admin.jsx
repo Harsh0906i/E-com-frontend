@@ -4,14 +4,15 @@ import { useParams } from 'react-router-dom';
 export default function Admin() {
     const [status, setStatus] = useState(null);
     const { id } = useParams()
-    console.log(id)
 
     const handleAction = async (action) => {
         try {
-            const response = await fetch(`http://localhost:8080/api/item/admin`, {
+            const token = localStorage.getItem('token');
+            const response = await fetch(`https://e-backend-two.vercel.app/api/item/admin`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization': `${token}`
                 },
                 body: JSON.stringify({
                     action: action,
@@ -24,6 +25,7 @@ export default function Admin() {
             }
 
             const result = await response.json();
+            console.log(result)
             setStatus(`Product ${action === 'accept' ? 'accepted' : 'rejected'} successfully!`);
         } catch (error) {
             setStatus(`Error: ${error.message}`);

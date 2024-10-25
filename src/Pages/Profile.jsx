@@ -48,7 +48,6 @@ export default function Profile() {
 
       const data = await res.json();
 
-      // Check if the success is false and handle the error
       if (!res.ok) {
         dispatch(signOutUserFaliure(data.message));
         return;
@@ -78,6 +77,11 @@ export default function Profile() {
         <Link to={`/dashboard/${currentUser._id}`}>
           <button className="bg-green-200 text-green-800 py-2 px-3 rounded-full border border-green-700  hover:bg-green-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-opacity-50 transition">
             Dashboard
+          </button>
+        </Link>
+        <Link to={`/Admin/${currentUser._id}`}>
+          <button className="bg-green-200 text-green-800 py-2 px-3 rounded-full border border-green-700  hover:bg-green-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-opacity-50 transition">
+            Admin Login
           </button>
         </Link>
       </div>
