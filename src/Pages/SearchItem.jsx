@@ -85,7 +85,7 @@ export default function ShowItem() {
             setloading(true)
             try {
                 const searchQuery = newurl.toString();
-                const res = await fetch(`https://e-backend-two.vercel.app/api/Item/get?${searchQuery}`);
+                const res = await fetch(`https://e-backend-two.vercel.app/api/item/get?${searchQuery}`);
                 const data = await res.json();
                 setItem(data);
                 setloading(false);
