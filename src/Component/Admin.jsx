@@ -25,7 +25,7 @@ export default function Admin() {
             }
 
             const result = await response.json();
-            console.log(result)
+            console.log('result',result)
             setStatus(`Product ${action === 'accept' ? 'accepted' : 'rejected'} successfully!`);
         } catch (error) {
             setStatus(`Error: ${error.message}`);
