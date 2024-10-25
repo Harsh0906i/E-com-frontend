@@ -8,12 +8,9 @@ export default function Admin() {
     const { currentUser } = useSelector((state) => state.user1)
     const [data, setData] = useState([])
     console.log(data)
-    console.log(typeof(data))
+    console.log(typeof (data))
 
-    data.map((item) => (
-        console.log(item.name)
-        // console.log(item)
-    ))
+
 
     useEffect(() => {
         async function fetchuser() {
@@ -56,6 +53,19 @@ export default function Admin() {
 
             {/* <button onClick={() => handleAction('accept')} className='bg-green-600 text-white rounded-full p-3'>Accept</button>
             <button onClick={() => handleAction('reject')} className='bg-red-600 text-white rounded-full p-3'>Reject</button> */}
+
+            {
+                data.map((item) => (
+                    <div>
+                        <p>{item.name}</p>
+                        <p>{item.storage.RAM}</p>
+                        <p>{item.storage.ROM}</p>
+                        <p>{item.regularPrice}</p>
+                        <p>{item.discountedPrice}</p>
+                        <img src={item.image} alt="" />
+                    </div>
+                ))
+            }
 
             {/* {status && <p className='text-center text-gray-500'>{status}</p>} */}
         </div>
