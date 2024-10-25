@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
@@ -7,32 +7,39 @@ export default function Admin() {
     const { id } = useParams()
     const { currentUser } = useSelector((state) => state.user1)
 
+    useEffect(() => {
+        async function fetchuser() {
+            try {
+                const token = localStorage.getItem('token');
+                const response = await fetch(`https://e-backend-two.vercel.app/api/item/admin/${currentUser._id}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `${token}`
+                    },
+                    // body: JSON.stringify({
+                    //     action: 'reject',
+                    //     productId: id,
+                    // }),
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to perform action');
+                }
+
+                const result = await response.json();
+                console.log('result', result)
+                setStatus(`Product ${action === 'accept' ? 'accepted' : 'rejected'} successfully!`);
+            } catch (error) {
+                setStatus(`Error: ${error.message}`);
+            }
+        }
+        fetchuser()
+    }, [])
+
 
     const handleAction = async (action) => {
-        try {
-            const token = localStorage.getItem('token');
-            const response = await fetch(`https://e-backend-two.vercel.app/api/item/admin/${currentUser._id}`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `${token}`
-                },
-                body: JSON.stringify({
-                    action: action,
-                    productId: id,
-                }),
-            });
 
-            if (!response.ok) {
-                throw new Error('Failed to perform action');
-            }
-
-            const result = await response.json();
-            console.log('result', result)
-            setStatus(`Product ${action === 'accept' ? 'accepted' : 'rejected'} successfully!`);
-        } catch (error) {
-            setStatus(`Error: ${error.message}`);
-        }
     };
 
     return (
