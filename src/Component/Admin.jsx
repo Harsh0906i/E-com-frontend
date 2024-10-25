@@ -45,15 +45,15 @@ export default function Admin() {
     }, [])
 
 
-    const handleAction = async (action) => {
+    // const handleAction = async (action) => {
 
-    };
+    // };
 
     return (
         <div className='flex items-center justify-center m-4 p-4'>
 
-            <button onClick={() => handleAction('accept')} className='bg-green-600 text-white rounded-full p-3'>Accept</button>
-            <button onClick={() => handleAction('reject')} className='bg-red-600 text-white rounded-full p-3'>Reject</button>
+            {/* <button onClick={() => handleAction('accept')} className='bg-green-600 text-white rounded-full p-3'>Accept</button>
+            <button onClick={() => handleAction('reject')} className='bg-red-600 text-white rounded-full p-3'>Reject</button> */}
 
             {/* {status && <p className='text-center text-gray-500'>{status}</p>} */}
         </div>
