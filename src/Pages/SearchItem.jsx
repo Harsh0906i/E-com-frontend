@@ -56,7 +56,6 @@ export default function ShowItem() {
         urlParams.set('CPU', sideBarData.CPU);
         urlParams.set('All', sideBarData.All);
         const searchQuery = urlParams.toString();
-        console.log(searchQuery)
         navigate(`/search?${searchQuery}`);
         setloading(false);
     }
@@ -138,7 +137,7 @@ export default function ShowItem() {
                         }{
                             !loading && Item && Item.map((item) => (<ShowSearchesItem key={item._id} items={item} />))
                         }{
-                            !loading && (
+                            !loading && showMore (
                                 <button className="text-green-700 hover:underline p-7 text-center w-full text-sm"
                                     onClick={(e) => { e.preventDefault(); showMoreButton(); setshowloading(true) }}>Show more</button>
                             )
