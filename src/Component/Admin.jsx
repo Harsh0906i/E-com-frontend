@@ -8,10 +8,10 @@ export default function Admin() {
     const { currentUser } = useSelector((state) => state.user1)
     const [data, setData] = useState([])
 
-    data.map((item) => (
-        console.log(item.name)
-        // console.log(item)
-    ))
+    // data.map((item) => (
+    //     console.log(item.name)
+    //     // console.log(item)
+    // ))
 
     useEffect(() => {
         async function fetchuser() {
