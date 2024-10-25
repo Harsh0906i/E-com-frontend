@@ -139,7 +139,7 @@ export default function ShowItem() {
                         }{
                             !loading && (
                                 <button className="text-green-700 hover:underline p-7 text-center w-full text-sm"
-                                    onClick={(e) => { e.preventDefault(); showMoreButton(); setshowloading(true) }}>Show more</button>
+                                    onClick={(e) => { e.preventDefault(); showMoreButton(); setshowloading(true) }}>{showMore?'Show more':''}</button>
                             )
                         }
                     </div>
