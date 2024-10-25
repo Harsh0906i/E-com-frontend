@@ -96,7 +96,7 @@ const Upload = () => {
         setError('Form submitted successfully!');
       }
     } catch (error) {
-      setError('error.message');
+      setError(error.message);
     } finally {
       setLoading(false);
     }
