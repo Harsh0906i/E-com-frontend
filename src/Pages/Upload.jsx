@@ -76,7 +76,7 @@ const Upload = () => {
 
     try {
       setLoading(true);
-      const response = await fetch(`http://localhost:8080/api/item/sell/${currentUser._id}`, {
+      const response = await fetch(`https://e-com-frontend-omega.vercel.app/api/item/sell/${currentUser._id}`, {
         method: 'POST',
         body: formDataToSend,
       });
@@ -89,10 +89,12 @@ const Upload = () => {
       setReceived(result);
       setFormData({});
       setProductType('none');
-      if (currentUser.isAdmin === 'false') {
+      {
+        currentUser.isAdmin === 'false' ?
         setError('Thanks for uploading! Our admin will review your item and get back to you shortly.')
+        :
+        setError('Form submitted successfully!');
       }
-      setError('Form submitted successfully!');
     } catch (error) {
       setError('error.message');
     } finally {
