@@ -137,7 +137,7 @@ export default function ShowItem() {
                         }{
                             !loading && Item && Item.map((item) => (<ShowSearchesItem key={item._id} items={item} />))
                         }{
-                            !loading && showMore (
+                            !loading && (
                                 <button className="text-green-700 hover:underline p-7 text-center w-full text-sm"
                                     onClick={(e) => { e.preventDefault(); showMoreButton(); setshowloading(true) }}>Show more</button>
                             )
