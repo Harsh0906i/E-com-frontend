@@ -56,6 +56,7 @@ export default function ShowItem() {
         urlParams.set('CPU', sideBarData.CPU);
         urlParams.set('All', sideBarData.All);
         const searchQuery = urlParams.toString();
+        console.log(searchQuery)
         navigate(`/search?${searchQuery}`);
         setloading(false);
     }
